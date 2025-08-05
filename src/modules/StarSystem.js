@@ -69,7 +69,7 @@ export class StarSystem {
         });
 
         // multiplying number of rays in the cross pattern
-        for (let i=0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             const ray = new THREE.Mesh(rayGeometry, rayMaterial);
             ray.rotation.z = (i * Math.PI) / 2; // 0, 90, 180, 270
             starGroup.add(ray)
@@ -77,7 +77,7 @@ export class StarSystem {
 
         // pointlight for illumination (white, intensity, distance)
         const starLight = new THREE.PointLight(0xffffff, 0.5, 2);
-        starLight.position.set(0,0,0);
+        starLight.position.set(0, 0, 0);
         starGroup.add(starLight);
 
         // position the group
@@ -90,21 +90,21 @@ export class StarSystem {
             flare: flare,
             light: starLight,
             intensity: 1,
-            pulseSpeed: 0.002 + Math.random() * 0.001 
+            pulseSpeed: 0.002 + Math.random() * 0.001
         }
-        
+
 
         this.scene.add(starGroup);
         this.stars.push(star);
 
         console.log(`Star created at (${intersectionPoint.x.toFixed(2)}, ${intersectionPoint.y.toFixed(2)}, ${intersectionPoint.z.toFixed(2)})`);
     }
-   
+
     update() {
         this.stars.forEach(star => {
             // pulsing effect
             const twinkle = 0.7 + Math.sin(Date.now() * star.pulseSpeed) * 0.3;
-            
+
             // star brightness
             star.centralStar.material.opacity = twinkle;
 
@@ -118,7 +118,7 @@ export class StarSystem {
             const time = Date.now() * 0.0005;
             const colorVariation = Math.sin(time + star.pulseSpeed) * 0.5;
             const warmColor = new THREE.Color().setHSL(0.1, 0.3, 0.9 + colorVariation);
-            star.centralStar.material.color.copy(warmColor); 
+            star.centralStar.material.color.copy(warmColor);
         });
     }
 
