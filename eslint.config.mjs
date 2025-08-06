@@ -11,6 +11,9 @@ export default [
       globals: {
         window: 'readonly',
         document: 'readonly',
+        requestAnimationFrame: 'readonly',
+        performance: 'readonly',
+        console: 'readonly',
       },
     },
     rules: {
@@ -22,13 +25,13 @@ export default [
       'no-unused-vars': 'warn',
     },
     ignores: [
-      'node_modules/', 
-      'dist/',  
-      'build/',  
+      'node_modules/',
+      'dist/',
+      'build/',
       '.git/',
       '**/*.test.js',
       '**/*.spec.js',
-      'coverage/',  
+      'coverage/',
       'public/',
       '.vscode/',
     ],
